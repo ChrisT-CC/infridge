@@ -27,15 +27,19 @@ Live website: [Live website placeholder](Live website link)
 
 
 ## User Stories
-Although this is a CLI app it doesn't address only to tech savvy people, because it was designed to with user interaction in mind.
+Although this is a CLI app it doesn't address only to tech savvy people, because it was designed with user interaction in mind.
 
-### As owner 
-- I want ..., to ...
-- I want ..., to ...
+### As developer 
+- I want to offer a solution to an everyday problem to help users choose a meal
+- I want the user to get a shopping list if a recipe is not available so that the user can still enjoy a favorite recipe
+- I want to offer feedback to user input to guide the user through the process of using the app
 
 ### As a user 
-- I want ..., to ...
-- I want ..., to ...
+- I want an easy to use app to avoid frustration
+- I want information on each step to understand what to do
+- I want be able to choose one of may favorite recipe to to enjoy a meal
+- I want be able to choose recipes based on an ingredient I fancy to save time sorting through my favorite recipes list
+- I want to have an up to date in fridge ingredients list
 
 [Back to top](#Table-of-contents)
 
