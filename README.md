@@ -1,11 +1,12 @@
-# Project name
+# inFridge
 
-Project overview
+## Project overview
 
+The purpose of this app is to help and fill any hungry belly out there. The app connects to a Google Sheet file. The file stores favorite recipes and infridge ingredients. The app generates a recipe based on infridge ingredients or a shopping list if no recipe is available.
 
-- What project hopes to accomplish?
-- Who is the intended target audience?
-- How/why is useful to target audience?
+inFridge is for everyone who cooks. From students, single parents, busy professionals to kids who want to surprise their parents or grandparents.
+
+Instead of wasting hours thinking what to cook for the day, just ask the computer what can you cook with what you have in the fridge.
 
 Live website: [Live website placeholder](Live website link)
 
@@ -26,6 +27,7 @@ Live website: [Live website placeholder](Live website link)
 
 
 ## User Stories
+Although this is a CLI app it doesn't address only to tech savvy people, because it was designed to with user interaction in mind.
 
 ### As owner 
 - I want ..., to ...
