@@ -19,11 +19,12 @@ Live website: [Live website placeholder](Live website link)
         - [Feature 1](#Feature-1)
         - [Feature 2](#Feature-2)
     - [Future Features](#Future-Features)
-3. [Data Model](#Data-Model)
-4. [Technologies Used](#Technologies-Used)
-5. [Testing](#Testing)
-6. [Deployment](#Deployment)
-7. [Credits](#Credits)
+3. [Flowchart](#Flowchart)
+4. [Data Model](#Data-Model)
+5. [Technologies Used](#Technologies-Used)
+6. [Testing](#Testing)
+7. [Deployment](#Deployment)
+8. [Credits](#Credits)
 
 
 ## User Stories
@@ -56,6 +57,12 @@ In this section, you can find implemented features as well as some features left
 ## Future Features
 #### - Feature 1
 #### - Feature 2
+
+[Back to top](#Table-of-contents)
+
+## Flowchart
+
+[Flowchart](assets/images/flowchart.pdf)
 
 [Back to top](#Table-of-contents)
 
