@@ -8,7 +8,7 @@ inFridge is for everyone who cooks. From students, single parents, busy professi
 
 Instead of wasting hours thinking what to cook for the day, just ask the computer what can you cook with what you have in the fridge.
 
-Live website: [Live website placeholder](Live website link)
+Live app: [inFridge](https://infridge.herokuapp.com/)
 
 ![Mockup image placeholder](Mockup image path)
 
