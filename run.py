@@ -29,4 +29,25 @@ recipes = SHEET.worksheet("recipes")
 
 data = recipes.get_all_values()
 
-print(data)
+# print(data)
+
+# Welcome screen
+
+
+def get_basic_ingredient():
+    '''
+    Welcomes user
+    Explains what the app is for
+    Asks for user input - basic ingredient - (chicken, potato, pie, brocoli)
+
+    '''
+    print("\nWelcome to inFridge\n")
+    print("This app helps you choose a meal based on infridge ingredients")
+    print("You have to choose a basic ingredient")
+    print("Example: chicken, potatos, pie, brocoli\n")
+    basic_ingredient = input("Please choose a basic ingredient: ")
+
+    print(f"The basic ingredient you chose is: {basic_ingredient}")
+
+
+get_basic_ingredient()
