@@ -19,6 +19,8 @@ Live app: [inFridge](https://infridge.herokuapp.com/)
         - [Feature 1](#Feature-1)
         - [Feature 2](#Feature-2)
     - [Future Features](#Future-Features)
+        - [Future Feature 1](#Future-Feature-1)
+        - [Future Feature 2](#Future-Feature-2)
 3. [Flowchart](#Flowchart)
 4. [Data Model](#Data-Model)
 5. [Technologies Used](#Technologies-Used)
@@ -55,8 +57,8 @@ In this section, you can find implemented features as well as some features left
 
 ![Feature 2 screenshot](Feature 2 screenshot path)
 ## Future Features
-#### - Feature 1
-#### - Feature 2
+#### -  Feature 1
+#### - Fuyure Feature 2
 
 [Back to top](#Table-of-contents)
 
@@ -82,6 +84,14 @@ Testing...
 [Back to top](#Table-of-contents)
 ## Deployment
 This section describes the process of deploying the project to GitHub Pages and creating an Application in Heroku
+
+### Creating an application in Heroku
+1. Use command: pip3 freeze > requirements.txt to create the list of requirements
+2. Log into heroku account and create new app
+3. In settings tab, set up config vars key=CREDS value=creds.json file content and key=PORT value=8000
+4. Add buildpacks Python and Nodejs
+5. In deployment tab, connect to GitHub 
+6. Deploy branch will generate [inFridge app](https://infridge.herokuapp.com/)
 
 ### Deploying to GitHub Pages
 1. Open a browser and navigate to [Github.com](https://github.com/)
@@ -110,7 +120,6 @@ This section describes the process of deploying the project to GitHub Pages and 
 7. In your IDE of choice, create a new repository
 8. Type "git clone 'copied URL'" and press enter
 
-### Creating an application in Heroku
 
 [Back to top](#Table-of-contents)
 ## Credits
