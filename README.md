@@ -57,14 +57,14 @@ In this section, you can find implemented features as well as some features left
 
 ![Feature 2 screenshot](Feature 2 screenshot path)
 ## Future Features
-#### -  Feature 1
-#### - Fuyure Feature 2
+#### - Future Feature 1
+#### - Future Feature 2
 
 [Back to top](#Table-of-contents)
 
 ## Flowchart
 
-[Flowchart](assets/images/flowchart.pdf)
+![Flowchart](assets/images/flowchart.png)
 
 [Back to top](#Table-of-contents)
 
