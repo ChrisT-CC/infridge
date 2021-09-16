@@ -42,15 +42,17 @@ def get_basic_ingredient():
     print("\nWelcome to inFridge\n")
     print("This app helps you choose a meal based on infridge ingredients")
 
-    print("You have to choose a basic ingredient")
-    print("Example: chicken, potatos, pie, brocoli\n")
-    basic_ingredient = input("Please choose a basic ingredient: ")
+    while True:
+        print("You have to choose a basic ingredient")
+        print("Example: chicken, potatos, pie, brocoli\n")
+        basic_ingredient = input("Please choose a basic ingredient: ")
 
-    # print(f"The basic ingredient you chose is: {basic_ingredient}")
-    if basic_ingredient.isalpha():
-        print(f"{basic_ingredient} is all letters")
-    else:
-        print("The basic ingredient must be all letters")
+        # print(f"The basic ingredient you chose is: {basic_ingredient}")
+        if basic_ingredient.isalpha():
+            print(f"{basic_ingredient} is all letters")
+            break
+        else:
+            print("The basic ingredient must be all letters")
 
 
 get_basic_ingredient()
