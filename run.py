@@ -29,7 +29,11 @@ recipes = SHEET.worksheet("recipes")
 
 data = recipes.get_all_values()
 
+ingredients_worksheet = SHEET.worksheet("ingredients")  # Ingredients worksheet
+ingredients_list = ingredients_worksheet.col_values(1)  # List of ingredients
+
 # print(data)
+# print(ingredients_list)
 
 
 def get_basic_ingredient():
@@ -42,17 +46,31 @@ def get_basic_ingredient():
     print("\nWelcome to inFridge\n")
     print("This app helps you choose a meal based on infridge ingredients")
 
+    print("You have to choose a basic ingredient")
+    print("Example: chicken, potatos, pie, brocoli\n")
+
     while True:
-        print("You have to choose a basic ingredient")
-        print("Example: chicken, potatos, pie, brocoli\n")
         basic_ingredient = input("Please choose a basic ingredient: ")
 
         # print(f"The basic ingredient you chose is: {basic_ingredient}")
         if basic_ingredient.isalpha():
-            print(f"{basic_ingredient} is all letters")
-            break
+            print(f"{basic_ingredient} is all letters"+"\n")
+            print(f"Check if {basic_ingredient} is in list of ingredients")
+            if validate_basic_ingredient(basic_ingredient):
+                print(f"{basic_ingredient} is valid")
+                break
         else:
-            print("The basic ingredient must be all letters")
+            print("The basic ingredient must be all letters\n")
+    return basic_ingredient
+
+
+def validate_basic_ingredient(value):
+    if value in ingredients_list:
+        print(f"{value} is in the list of ingredients"+"\n")
+    else:
+        print(f"{value} is not in the list of ingredients"+"\n")
+        return False
+    return True
 
 
 get_basic_ingredient()
