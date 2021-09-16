@@ -83,11 +83,18 @@ def generate_available_recipes_list(value):
     all_recipes = recipes.col_values(1)
     # print(all_recipes)
     # print("Generate a dictionary of numbers and Recipes for basic_ing recipe sheet")
-    print("Generate a list of Recipes for basic_ing recipe sheet")
+    print(f"Your available Recipes with {value} are:"+"\n")
     available_recipes = [recipes.cell(num,1).value for num in range(1,len(all_recipes)) if value in recipes.row_values(num)]
     print(available_recipes)
 
     return available_recipes
 
+
+def print_available_recipes(value):
+    for ind in range(len(value)):
+        print(f"{ind+1} {value[ind]}")
+
+
 basic_ing = get_basic_ingredient()
 available_recipes = generate_available_recipes_list(basic_ing)
+print_available_recipes(available_recipes)
