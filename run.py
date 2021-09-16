@@ -41,7 +41,6 @@ def get_basic_ingredient():
     Welcomes user
     Explains what the app is for
     Asks for user input - basic ingredient - (chicken, potato, pie, brocoli)
-
     '''
     print("\nWelcome to inFridge\n")
     print("This app helps you choose a meal based on infridge ingredients")
@@ -65,6 +64,9 @@ def get_basic_ingredient():
 
 
 def validate_basic_ingredient(value):
+    '''
+    Checks if basic ingredient is in list of ingredients
+    '''
     if value in ingredients_list:
         print(f"{value} is in the list of ingredients"+"\n")
     else:
@@ -73,4 +75,19 @@ def validate_basic_ingredient(value):
     return True
 
 
-get_basic_ingredient()
+def generate_available_recipes_list(value):
+    '''
+    Generate a list of recipes that contains the chosen basic ingredient
+    '''
+    print(f"Generating the list of recipes based on {value} ingredient")
+    all_recipes = recipes.col_values(1)
+    # print(all_recipes)
+    # print("Generate a dictionary of numbers and Recipes for basic_ing recipe sheet")
+    print("Generate a list of Recipes for basic_ing recipe sheet")
+    available_recipes = [recipes.cell(num,1).value for num in range(1,len(all_recipes)) if value in recipes.row_values(num)]
+    print(available_recipes)
+
+    return available_recipes
+
+basic_ing = get_basic_ingredient()
+available_recipes = generate_available_recipes_list(basic_ing)
