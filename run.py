@@ -31,6 +31,7 @@ data = recipes.get_all_values()
 
 ingredients_worksheet = SHEET.worksheet("ingredients")  # Ingredients worksheet
 ingredients_list = ingredients_worksheet.col_values(1)  # List of ingredients
+ingredients_cuantity = ingredients_worksheet.col_values(2)
 
 # print(data)
 # print(ingredients_list)
@@ -75,6 +76,13 @@ def validate_basic_ingredient(value):
     return True
 
 
+def check_fridge():
+    if not ingredients_cuantity:
+        print("Fridge is empty. Time to fill it!!")
+    else:
+        print(ingredients_cuantity)
+
+
 def generate_available_recipes_list(value):
     '''
     Generate a list of recipes that contains the chosen basic ingredient
@@ -94,7 +102,7 @@ def print_available_recipes(value):
     for ind in range(len(value)):
         print(f"{ind+1} {value[ind]}")
 
-
-basic_ing = get_basic_ingredient()
-available_recipes = generate_available_recipes_list(basic_ing)
-print_available_recipes(available_recipes)
+check_fridge()
+# basic_ing = get_basic_ingredient()
+# available_recipes = generate_available_recipes_list(basic_ing)
+# print_available_recipes(available_recipes)
