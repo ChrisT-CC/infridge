@@ -1,3 +1,10 @@
+"""
+This app connects to a Google Sheet file with two worksheets.
+The worksheets store favorite recipes and infridge ingredients.
+The app generates a recipe based on infridge ingredients or a shopping list
+if no recipe is available.
+"""
+
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
 # Code copied and adapted from "CI Love sandwiches" project
@@ -47,11 +54,10 @@ def get_basic_ingredient():
     print("This app helps you choose a meal based on infridge ingredients")
 
     print("You have to choose a basic ingredient")
-    print("Example: chicken, potatos, pie, brocoli\n")
+    print("Example: chicken, potatos, pie, broccoli\n")
 
     while True:
         basic_ingredient = input("Please choose a basic ingredient: ")
-
         # print(f"The basic ingredient you chose is: {basic_ingredient}")
         if basic_ingredient.isalpha():
             print(f"{basic_ingredient} is all letters"+"\n")
@@ -77,6 +83,7 @@ def validate_basic_ingredient(value):
 
 
 def check_fridge():
+    """Checks if the fridge is empty"""
     if not ingredients_cuantity:
         print("Fridge is empty. Time to fill it!!")
     else:
@@ -90,17 +97,25 @@ def generate_available_recipes_list(value):
     print(f"Generating the list of recipes based on {value} ingredient")
     all_recipes = recipes.col_values(1)
     # print(all_recipes)
-    # print("Generate a dictionary of numbers and Recipes for basic_ing recipe sheet")
+    # print(
+    #   "Generate a dictionary of numbers and Recipes for basic_ing "\
+    #   "recipe sheet"
+    #   )
     print(f"Your available Recipes with {value} are:"+"\n")
-    available_recipes = [recipes.cell(num,1).value for num in range(1,len(all_recipes)) if value in recipes.row_values(num)]
+    available_recipes = [
+        recipes.cell(num, 1).value for num in range(1, len(all_recipes))
+        if value in recipes.row_values(num)]
     print(available_recipes)
 
     return available_recipes
 
 
 def print_available_recipes(value):
-    for ind in range(len(value)):
+    """Prints a list of available recipes"""
+    num = len(value)
+    for ind in range(num):
         print(f"{ind+1} {value[ind]}")
+
 
 check_fridge()
 # basic_ing = get_basic_ingredient()
