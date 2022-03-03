@@ -95,8 +95,13 @@ Data model goes here...
 
 ## Technologies Used
 
-1. [Technology 1](Technology 1 link) - description
-2. [Technology 1](Technology 1 link) - description
+- [Python 3](https://www.python.org/) - used to write the code for this project
+- [Git](https://git-scm.com/) - used for version control
+- [Github](https://github.com/) - used to host the repo
+- [Gitpod](https://gitpod.com/) - IDE used to write, add, commit and push the code
+- [Heroku](https://www.heroku.com) - used to deploy the app
+- [Lucidchart](https://www.lucidchart.com/) - used to create the flowchart
+- [Google Sheets](https://www.google.co.uk/sheets/about/) - used to store data
 
 [Back to top](#Table-of-contents)
 
