@@ -48,25 +48,26 @@ def get_basic_ingredient():
     '''
     Welcomes user
     Explains what the app is for
-    Asks for user input - basic ingredient - (chicken, potato, pie, brocoli)
+    Asks for user input - basic ingredient - (chicken, potato, pie, broccoli)
     '''
-    print("\nWelcome to inFridge\n")
-    print("This app helps you choose a meal based on infridge ingredients")
-
     print("You have to choose a basic ingredient")
     print("Example: chicken, potatos, pie, broccoli\n")
 
     while True:
         basic_ingredient = input("Please choose a basic ingredient: ")
         # print(f"The basic ingredient you chose is: {basic_ingredient}")
-        if basic_ingredient.isalpha():
-            print(f"{basic_ingredient} is all letters"+"\n")
-            print(f"Check if {basic_ingredient} is in list of ingredients")
-            if validate_basic_ingredient(basic_ingredient):
-                print(f"{basic_ingredient} is valid")
-                break
+        if basic_ingredient.isdigit():
+            print("The basic ingredient can't be a number. Try again\n")
+        elif basic_ingredient == "":
+            print("The basic ingredient can't empty. Try again\n")
         else:
-            print("The basic ingredient must be all letters\n")
+            # print(f"{basic_ingredient} is a string"+"\n")
+            # print(
+            #     f"Checking if '{basic_ingredient}' is in list of ingredients"
+            #     )
+            if validate_basic_ingredient(basic_ingredient):
+                # print(f"'{basic_ingredient}' is valid")
+                break
     return basic_ingredient
 
 
@@ -75,9 +76,9 @@ def validate_basic_ingredient(value):
     Checks if basic ingredient is in list of ingredients
     '''
     if value in ingredients_list:
-        print(f"{value} is in the list of ingredients"+"\n")
+        print(f"'{value}' is in the list of ingredients"+"\n")
     else:
-        print(f"{value} is not in the list of ingredients"+"\n")
+        print(f"'{value}' is not in the list of ingredients"+"\n")
         return False
     return True
 
@@ -117,7 +118,10 @@ def print_available_recipes(value):
         print(f"{ind+1} {value[ind]}")
 
 
+print("\nWelcome to inFridge")
+print("This app helps you choose a meal based on infridge ingredients\n")
+
 check_fridge()
-# basic_ing = get_basic_ingredient()
-# available_recipes = generate_available_recipes_list(basic_ing)
-# print_available_recipes(available_recipes)
+basic_ing = get_basic_ingredient()
+available_recipes = generate_available_recipes_list(basic_ing)
+print_available_recipes(available_recipes)
