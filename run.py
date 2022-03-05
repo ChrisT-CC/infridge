@@ -107,8 +107,13 @@ def generate_available_recipes_list(value):
 def print_available_recipes(value):
     """Prints a list of available recipes"""
     num = len(value)
+    recipes_dict = {}
     for ind in range(num):
         print(f"{ind+1} {value[ind]}")
+        recipes_dict.update({ind+1: value[ind]})
+        # print(recipes_dict)
+    print(recipes_dict)
+    return recipes_dict
 
 
 print("\nWelcome to inFridge")
