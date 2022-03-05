@@ -62,9 +62,6 @@ def get_basic_ingredient():
             print("The basic ingredient can't empty. Try again\n")
         else:
             # print(f"{basic_ingredient} is a string"+"\n")
-            # print(
-            #     f"Checking if '{basic_ingredient}' is in list of ingredients"
-            #     )
             if validate_basic_ingredient(basic_ingredient):
                 # print(f"'{basic_ingredient}' is valid")
                 break
@@ -92,23 +89,19 @@ def check_fridge():
 
 
 def generate_available_recipes_list(value):
-    '''
-    Generate a list of recipes that contains the chosen basic ingredient
-    '''
-    print(f"Generating the list of recipes based on {value} ingredient")
+    '''Generate a list of recipes that contains the chosen basic ingredient'''
+    print(f"Generating the list of recipes based on {value} ..."+"\n")
     all_recipes = recipes.col_values(1)
     # print(all_recipes)
-    # print(
-    #   "Generate a dictionary of numbers and Recipes for basic_ing "\
-    #   "recipe sheet"
-    #   )
-    print(f"Your available Recipes with {value} are:"+"\n")
-    available_recipes = [
-        recipes.cell(num, 1).value for num in range(1, len(all_recipes))
-        if value in recipes.row_values(num)]
-    print(available_recipes)
+    print(f"Your recipes with {value} are:")
+    ingredient_recipes = [
+        recipes.cell(num, 1).value
+        for num in range(1, len(all_recipes)+1)
+        if value in recipes.row_values(num)
+        ]
+    # print(ingredient_recipes)
 
-    return available_recipes
+    return ingredient_recipes
 
 
 def print_available_recipes(value):
