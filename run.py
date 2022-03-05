@@ -112,16 +112,36 @@ def print_available_recipes(value):
         print(f"{ind+1} {value[ind]}")
         recipes_dict.update({ind+1: value[ind]})
         # print(recipes_dict)
-    print(recipes_dict)
+    # print(recipes_dict)
     return recipes_dict
 
 
 def choose_recipe(value):
     '''Asks the user to choose a recipe'''
-    recipe_num = input("\nChoose a recipe by number: ")
+    while True:
+        recipe_num = input("\nChoose a recipe by number: ")
+        if validate_choice(recipe_num, len(value)):
+            break
     result = value[int(recipe_num)]
     print(result)
     return result
+
+
+def validate_choice(choice_num, max_num):
+    """
+    Inside try, converts the string choice_num value to integer.
+    Raises ValueError if the choice_num cannot be converted into int,
+    or if the choice_num value is bigger the max number of choices.
+    """
+    try:
+        int(choice_num)
+        if int(choice_num) > max_num:
+            raise ValueError(f"Choose a number lower then {max_num+1}")
+            # print("validate_choice")
+    except ValueError as error:
+        print(f"Invalid data: {error}, please try again.\n")
+        return False
+    return True
 
 
 print("\nWelcome to inFridge")
