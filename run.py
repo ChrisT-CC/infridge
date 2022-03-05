@@ -116,10 +116,19 @@ def print_available_recipes(value):
     return recipes_dict
 
 
+def choose_recipe(value):
+    '''Asks the user to choose a recipe'''
+    recipe_num = input("\nChoose a recipe by number: ")
+    result = value[int(recipe_num)]
+    print(result)
+    return result
+
+
 print("\nWelcome to inFridge")
 print("This app helps you choose a meal based on infridge ingredients\n")
 
 check_fridge()
 basic_ing = get_basic_ingredient()
 available_recipes = generate_available_recipes_list(basic_ing)
-print_available_recipes(available_recipes)
+dict_available_recipes = print_available_recipes(available_recipes)
+choose_recipe(dict_available_recipes)
