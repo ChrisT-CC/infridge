@@ -144,10 +144,17 @@ def validate_choice(choice_num, max_num):
     return True
 
 
+def get_ingredients(rec_r):
+    """Get ingredients for chosen recipe"""
+    ing_list = rec_r[1:-1]
+    print(ing_list)
+    return ing_list
+
+
 def get_recipe_row(rec_choice):
     """Find the recipe row in recipes worksheet"""
     recipe_cell_num = recipes.find(rec_choice).row
-    print(recipe_cell_num)
+    # print(recipe_cell_num)
     rec_row = recipes.row_values(recipe_cell_num)
     # print(recipe_row)
     return rec_row
@@ -161,4 +168,5 @@ basic_ing = get_basic_ingredient()
 available_recipes = generate_available_recipes_list(basic_ing)
 dict_available_recipes = print_available_recipes(available_recipes)
 recipe_choice = choose_recipe(dict_available_recipes)
-get_recipe_row(recipe_choice)
+recipe_row = get_recipe_row(recipe_choice)
+get_ingredients(recipe_row)
