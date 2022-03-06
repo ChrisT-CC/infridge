@@ -157,8 +157,10 @@ def ingredients_infridge(ing_list):
             # print(f"{ing} = {ing_quant}")
             continue
     if missing_ingredients == []:
-        print("All ingredients available")
+        print("All ingredients available\n")
         print("Printing recipe...\n")
+        print_recipe()
+        print("Removing used ingredients...")
     else:
         print("Recipe not available")
         print("options")
@@ -173,6 +175,17 @@ def get_recipe_row(rec_choice):
     rec_row = recipes.row_values(recipe_cell_num)
 
     return rec_row
+
+
+def print_recipe():
+    """Prints chosen recipe"""
+    # print(f"Recipe {recipe_row}")
+    print(recipe_row[0]+"\n")
+    print("Ingredients:\n")
+    for ing in recipe_row[1:-1]:
+        print(ing)
+    print("\nCoocking method:\n")
+    print(recipe_row[-1]+"\n")
 
 
 print("\nWelcome to inFridge")
