@@ -5,9 +5,8 @@ The app generates a recipe based on infridge ingredients or a shopping list
 if no recipe is available.
 """
 
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
-
 # Code copied and adapted from "CI Love sandwiches" project
+# Lines 13, 16, 20-24 and 29-32
 
 # Import the entire "gspread" library
 # So I can access any function, class or method within it
@@ -37,10 +36,8 @@ recipes = SHEET.worksheet("recipes")
 data = recipes.get_all_values()
 
 ingredients_worksheet = SHEET.worksheet("ingredients")  # Ingredients worksheet
-ingredients_list = ingredients_worksheet.col_values(1)  # List of ingredients
+ingredients = ingredients_worksheet.col_values(1)  # List of ingredients
 ingredients_quantity = ingredients_worksheet.col_values(2)
-
-# print(ingredients_worksheet.get_all_values())
 
 
 def get_basic_ingredient():
@@ -50,9 +47,9 @@ def get_basic_ingredient():
     Asks for user input - basic ingredient - (chicken, potato, pie, broccoli)
     '''
     print("You have to choose a basic ingredient")
-    print("Example: chicken, potatos, pie, broccoli\n")
+    print("Example: chicken, potatoes, eggs, broccoli\n")
 
-    while True:
+    while check_fridge():
         basic_ingredient = input("Please choose a basic ingredient: ")
         if basic_ingredient.isdigit():
             print("The basic ingredient can't be a number. Try again\n")
@@ -69,7 +66,7 @@ def validate_basic_ingredient(value):
     '''
     Checks if basic ingredient is in list of ingredients
     '''
-    if value in ingredients_list:
+    if value in ingredients:
         print(f"'{value}' is in the list of ingredients"+"\n")
     else:
         print(f"'{value}' is not in the list of ingredients"+"\n")
@@ -83,7 +80,7 @@ def check_fridge():
     if not ingredients_quantity:
         print("Fridge is empty. Time to fill it!!")
     else:
-        print(ingredients_quantity)
+        return True
 
 
 def generate_available_recipes_list(value):
@@ -156,7 +153,6 @@ def ingredients_infridge(ing_list):
         if ing_quant == "0":
             missing_ingredients.append(ing)
         else:
-            # print(f"{ing} = {ing_quant}")
             continue
     if missing_ingredients == []:
         print("All ingredients available\n")
@@ -167,8 +163,6 @@ def ingredients_infridge(ing_list):
         print("Recipe not available")
         print("options")
         print(missing_ingredients)
-    # print(missing_ingredients)
-    # return missing_ingredients
 
 
 def get_recipe_row(rec_choice):
@@ -181,7 +175,6 @@ def get_recipe_row(rec_choice):
 
 def print_recipe():
     """Prints chosen recipe"""
-    # print(f"Recipe {recipe_row}")
     print(recipe_row[0]+"\n")
     print("Ingredients:\n")
     for ing in recipe_row[1:-1]:
@@ -194,7 +187,6 @@ def remove_ingredients(ing):
     """Remove ingredients"""
     print("Removing used ingredients...\n")
     # print(ing)
-    # print(ingredients_quantity)
     for i in ing:
         ing_cell_num = ingredients_worksheet.find(i).row
         ing_quant = ingredients_quantity[ing_cell_num-1]
@@ -204,14 +196,19 @@ def remove_ingredients(ing):
     print("Ingredients removed successfully\n")
 
 
+def main():
+    '''Runs all the function'''
+    check_fridge()
+    basic_ing = get_basic_ingredient()
+    available_recipes = generate_available_recipes_list(basic_ing)
+    dict_available_recipes = print_available_recipes(available_recipes)
+    recipe_choice = choose_recipe(dict_available_recipes)
+    global recipe_row
+    recipe_row = get_recipe_row(recipe_choice)
+    ingredients_list = get_ingredients(recipe_row)
+    ingredients_infridge(ingredients_list)
+
+
 print("\nWelcome to inFridge")
 print("This app helps you choose a meal based on infridge ingredients\n")
-
-check_fridge()
-basic_ing = get_basic_ingredient()
-available_recipes = generate_available_recipes_list(basic_ing)
-dict_available_recipes = print_available_recipes(available_recipes)
-recipe_choice = choose_recipe(dict_available_recipes)
-recipe_row = get_recipe_row(recipe_choice)
-ingredients_list = get_ingredients(recipe_row)
-ingredients_infridge(ingredients_list)
+main()
