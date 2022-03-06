@@ -40,6 +40,8 @@ ingredients_worksheet = SHEET.worksheet("ingredients")  # Ingredients worksheet
 ingredients_list = ingredients_worksheet.col_values(1)  # List of ingredients
 ingredients_quantity = ingredients_worksheet.col_values(2)
 
+# print(ingredients_worksheet.get_all_values())
+
 
 def get_basic_ingredient():
     '''
@@ -160,7 +162,7 @@ def ingredients_infridge(ing_list):
         print("All ingredients available\n")
         print("Printing recipe...\n")
         print_recipe()
-        print("Removing used ingredients...")
+        remove_ingredients(ing_list)
     else:
         print("Recipe not available")
         print("options")
@@ -186,6 +188,20 @@ def print_recipe():
         print(ing)
     print("\nCoocking method:\n")
     print(recipe_row[-1]+"\n")
+
+
+def remove_ingredients(ing):
+    """Remove ingredients"""
+    print("Removing used ingredients...\n")
+    # print(ing)
+    # print(ingredients_quantity)
+    for i in ing:
+        ing_cell_num = ingredients_worksheet.find(i).row
+        ing_quant = ingredients_quantity[ing_cell_num-1]
+        update = int(ing_quant)-1
+        ingredients_worksheet.update_cell(ing_cell_num, 2, update)
+        # print(f"{ing_cell_num} {i} is {ing_quant} - 1 = {update}")
+    print("Ingredients removed successfully\n")
 
 
 print("\nWelcome to inFridge")
