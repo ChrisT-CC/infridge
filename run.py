@@ -38,7 +38,7 @@ data = recipes.get_all_values()
 
 ingredients_worksheet = SHEET.worksheet("ingredients")  # Ingredients worksheet
 ingredients_list = ingredients_worksheet.col_values(1)  # List of ingredients
-ingredients_cuantity = ingredients_worksheet.col_values(2)
+ingredients_quantity = ingredients_worksheet.col_values(2)
 
 # print(data)
 # print(ingredients_list)
@@ -82,10 +82,10 @@ def validate_basic_ingredient(value):
 
 def check_fridge():
     """Checks if the fridge is empty"""
-    if not ingredients_cuantity:
+    if not ingredients_quantity:
         print("Fridge is empty. Time to fill it!!")
     else:
-        print(ingredients_cuantity)
+        print(ingredients_quantity)
 
 
 def generate_available_recipes_list(value):
@@ -144,6 +144,15 @@ def validate_choice(choice_num, max_num):
     return True
 
 
+def get_recipe_row(rec_choice):
+    """Find the recipe row in recipes worksheet"""
+    recipe_cell_num = recipes.find(rec_choice).row
+    print(recipe_cell_num)
+    rec_row = recipes.row_values(recipe_cell_num)
+    # print(recipe_row)
+    return rec_row
+
+
 print("\nWelcome to inFridge")
 print("This app helps you choose a meal based on infridge ingredients\n")
 
@@ -151,4 +160,5 @@ check_fridge()
 basic_ing = get_basic_ingredient()
 available_recipes = generate_available_recipes_list(basic_ing)
 dict_available_recipes = print_available_recipes(available_recipes)
-choose_recipe(dict_available_recipes)
+recipe_choice = choose_recipe(dict_available_recipes)
+get_recipe_row(recipe_choice)
