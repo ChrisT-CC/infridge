@@ -10,7 +10,9 @@ Instead of wasting hours thinking what to cook for the day, just ask the compute
 
 Live app: [inFridge](https://infridge.herokuapp.com/)
 
-![Mockup image placeholder](Mockup image path)
+Google Sheets file: [infridge](https://docs.google.com/spreadsheets/d/10gtKWjzPfkX5UN9JfG0TRU5PQRRFo3zMGl3JanjR9xI/edit?usp=sharing)
+
+![Mockup image placeholder](assets/images/mockup.jpg)
 
 ## Table of contents
 
