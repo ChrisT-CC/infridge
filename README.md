@@ -19,11 +19,18 @@ Google Sheets file: [infridge](https://docs.google.com/spreadsheets/d/10gtKWjzPf
 1. [User Stories](#User-stories)
 2. [Features](#Features)
     - [Existing Features](#Existing-Features)
-        - [Feature 1](#Feature-1)
-        - [Feature 2](#Feature-2)
+        - [Welcome screen](#Welcome-screen)
+        - [Choosing and validating basic ingredient](#Choosing-and-validating-basic-ingredient)
+        - [Recipes list](#Recipes-list)
+        - [Print recipe](#Print-recipe)
+        - [Remove ingredients](#Remove-ingredients)
+        - [Shopping list](#Shopping-list)
+        - [Add ingredients](#Add-ingredients)
     - [Future Features](#Future-Features)
-        - [Future Feature 1](#Future-Feature-1)
-        - [Future Feature 2](#Future-Feature-2)
+        - [Add ingredients menu option](#Add-ingredients-menu-option)
+        - [Add recipe](#Add-recipe)
+        - [Real quantities](#Real-quantities)
+        - [Other features](#Other-features)
 3. [Flowchart](#Flowchart)
 4. [Data Model](#Data-Model)
 5. [Technologies Used](#Technologies-Used)
@@ -47,8 +54,8 @@ Although this is a CLI app it doesn't address only to tech savvy people, because
 
 - I want an easy to use app to avoid frustration
 - I want information on each step to understand what to do
-- I want be able to choose one of may favorite recipe to to enjoy a meal
-- I want be able to choose recipes based on an ingredient I fancy to save time sorting through my favorite recipes list
+- I want to be able to choose one of may favorite recipes to enjoy a meal
+- I want to be able to choose recipes based on an ingredient I fancy to save time sorting through my favorite recipes list
 - I want be able to add or remove ingredients so that I have an up to date in fridge ingredients list
 
 [Back to top](#Table-of-contents)
@@ -61,19 +68,73 @@ In this section, you can find implemented features as well as some features left
 
 ### Existing Features
 
-#### Feature 1
+#### Welcome screen
 
-![Feature 1 screenshot](Feature 1 screenshot path)
+Welcomes user and explains what can be done and how.
 
-#### Feature 2
+![Welcome screenshot](assets/images/welcome.jpg)
 
-![Feature 2 screenshot](Feature 2 screenshot path)
+#### Choosing and validating basic ingredient
+
+A basic ingredient can be choose only if the ingredient already exists in the spreadsheet and input validation is passed.
+
+![Basic ingredient](assets/images/basic-ingredient-validation.jpg)
+
+#### Recipes list
+
+A list of recipes is generated based on chosen ingredient after correct validation.
+This list is printed with option numbers for each recipe so that the user can easily chose wich recipe to try.
+
+![Recipes list](assets/images/recipe-list.jpg)
+
+#### Print recipe
+
+If chosen recipe has all ingredients infridge it will be printed in a user friendly format. This is a potential app ending, so the a nice "Good bye!" message is displayed to inform the user.
+
+![Print recipe](assets/images/print-recipe.jpg)
+
+#### Remove ingredients
+
+When the chosen recipe is successfully printed the ingredients quantities are automatically removed from the spreadsheet to keep the document up to date.
+
+![Remove ingredients](assets/images/print-recipe.jpg)
+
+#### Shopping list
+
+If a recipe is not available the user can choose to see a shopping list.
+Requesting a shopping list doesn't alter the spreadsheet in any way. The user will have to go through the process again in order to add the missing ingredients after shopping and again to remove the used ingredients. This leaves room for improvement...
+
+![Shopping list](assets/images/shopping-list.jpg)
+
+#### Add ingredients
+
+If a recipe is not available the user can choose to add ingredients.
+This will update the spreadsheet. If an ingredient already exists its quantity will be updated. If an ingredient is new its name and quantity will be added as a new row in the ingredients worksheet.
+
+![Add ingredients](assets/images/add-ingredients.jpg)
 
 ### Future Features
 
-#### Future Feature 1
+#### Add ingredients menu option
 
-#### Future Feature 2
+Add ingredients feature already exists, but it comes at the end of the app as part of the user's guiding process. It would be better used as a menu option at the beggining of the app.
+
+#### Add recipe
+
+This will be a good addition to the app especially if the app evolves from CLI to GUI. It wasn't implemented at the time of the submission because the app usses a spreadsheet and it's easier for the user to add the data in the spreadsheet.
+
+#### Real quantities
+
+At the moment the ingredients quantities don't have measurement units. Each quantity is represented by a integer number. This can be improved.
+
+#### Other features
+
+The app can be expanded in quite a few ways:
+
+- add drinks recipes
+- add meal categories
+- add ingredients expiry date
+- add calories tracker
 
 [Back to top](#Table-of-contents)
 
