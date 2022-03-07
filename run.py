@@ -31,9 +31,8 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("infridge")
 
+# Access worksheets
 recipes = SHEET.worksheet("recipes")
-
-data = recipes.get_all_values()
 
 ingredients_worksheet = SHEET.worksheet("ingredients")  # Ingredients worksheet
 ingredients = ingredients_worksheet.col_values(1)  # List of ingredients
@@ -42,13 +41,14 @@ ingredients_quantity = ingredients_worksheet.col_values(2)
 
 def get_basic_ingredient():
     '''
-    Welcomes user
-    Explains what the app is for
+    Starting function
+    Explains what to do in the app
     Asks for user input - basic ingredient - (chicken, potato, pie, broccoli)
     '''
-    print("You have to choose a basic ingredient")
+    print("\nYou have to choose a basic ingredient")
     print("Example: chicken, potatoes, eggs, broccoli\n")
 
+    # App only works if there are ingredients in fridge
     while check_fridge():
         basic_ingredient = input("Please choose a basic ingredient: ").lower()
         if basic_ingredient.isdigit():
@@ -78,7 +78,8 @@ def validate_basic_ingredient(value):
 def check_fridge():
     """Checks if the fridge is empty"""
     if not ingredients_quantity:
-        print("Fridge is empty. Time to fill it!!")
+        print("\nFridge is empty. Time to fill it!!")
+        print("\nGood bye!\n")
     else:
         return True
 
@@ -88,6 +89,7 @@ def generate_available_recipes_list(value):
     print(f"Generating the list of recipes based on {value} ..."+"\n")
     all_recipes = recipes.col_values(1)
     print(f"Your recipes with {value} are:")
+    # list comprehension to generate available recipes
     ingredient_recipes = [
         recipes.cell(num, 1).value
         for num in range(1, len(all_recipes)+1)
@@ -100,6 +102,7 @@ def generate_available_recipes_list(value):
 def print_available_recipes(value):
     """Prints a list of available recipes"""
     num = len(value)
+    # creates a dictionary with option number and available recipe
     recipes_dict = {}
     for ind in range(num):
         print(f"{ind+1} {value[ind]}")
@@ -138,6 +141,7 @@ def validate_choice(choice_num, max_num):
 
 def get_ingredients(rec_r):
     """Get ingredients for chosen recipe"""
+    # list excludes first and last item
     ing_list = rec_r[1:-1]
 
     return ing_list
@@ -146,11 +150,12 @@ def get_ingredients(rec_r):
 def ingredients_infridge(ing_list):
     """Check ingredients for chosen recipe exist"""
     print("Checking ingredients...\n")
-    missing_ingredients = []
+    missing_ingredients = []  # initialize list of missing ingredients
     for ing in ing_list:
         ing_cell_num = ingredients_worksheet.find(ing).row
         ing_quant = ingredients_quantity[ing_cell_num-1]
         if ing_quant == "0":
+            # create list of missing ingredients
             missing_ingredients.append(ing)
         else:
             continue
@@ -158,12 +163,14 @@ def ingredients_infridge(ing_list):
         print("All ingredients available\n")
         print("Printing recipe...\n")
         print_recipe()
+        # removing ingredients as used
         remove_ingredients(ing_list)
     else:
         print("Recipe not available\n")
         print("You can:\n")
         print("1 Print a shopping list with the missing ingredients")
         print("2 Add ingredients")
+        # check option until valid input
         while True:
             option_num = input(
                 "\nPlease choose one of the above options by number: ")
@@ -174,8 +181,10 @@ def ingredients_infridge(ing_list):
             print_shopping_list(missing_ingredients)
         elif result == 2:
             print("\nAdd ingredients")
+            # loop to add ingredients until user input is 2
             while True:
                 add_ingredients()
+                # check option until valid input
                 while True:
                     option = input("Add more? (1 = yes, 2 = no) ")
                     if validate_choice(option, 2):
@@ -196,16 +205,17 @@ def get_recipe_row(rec_choice):
 
 def print_recipe():
     """Prints chosen recipe"""
+    # Choosing specific row elements to format recipe output
     print(recipe_row[0]+"\n")
     print("Ingredients:\n")
     for ing in recipe_row[1:-1]:
         print(ing)
-    print("\nCoocking method:\n")
+    print("\nCooking method:\n")
     print(recipe_row[-1]+"\n")
 
 
 def remove_ingredients(ing):
-    """Remove ingredients"""
+    """Remove used ingredients"""
     print("Removing used ingredients...\n")
     for i in ing:
         ing_cell_num = ingredients_worksheet.find(i).row
@@ -221,17 +231,20 @@ def print_shopping_list(value):
     print("\nShopping list\n")
     for val in value:
         print(val)
+    print("\nGood bye!\n")
 
 
 def add_ingredients():
     """Adding ingredients to ingredients worksheet"""
     ingredient = input("\nIngredient name: ")
     ing_val = input("Ingredient quantity: ")
+    # if ingredient exists its value will be updated
     if ingredient in ingredients:
         ing_cell_num = ingredients_worksheet.find(ingredient).row
         ing_quant = ingredients_quantity[ing_cell_num-1]
         update = int(ing_quant) + int(ing_val)
         ingredients_worksheet.update_cell(ing_cell_num, 2, update)
+    # if ingredient is new its value will be added as a new row
     else:
         ingredients_worksheet.append_row([ingredient, int(ing_val)])
     print("\nIngredient added\n")
@@ -244,12 +257,15 @@ def main():
     available_recipes = generate_available_recipes_list(basic_ing)
     dict_available_recipes = print_available_recipes(available_recipes)
     recipe_choice = choose_recipe(dict_available_recipes)
+    # change scope to recipe_ro to be called again in different function
     global recipe_row
     recipe_row = get_recipe_row(recipe_choice)
     ingredients_list = get_ingredients(recipe_row)
     ingredients_infridge(ingredients_list)
 
 
-print("\nWelcome to inFridge")
+print("\nWelcome to inFridge\n")
 print("This app helps you choose a meal based on infridge ingredients\n")
+print("You can quit at anytime by pressing CTRL+C and restart the app from "
+      "'RUN PROGRAM' button above")
 main()
