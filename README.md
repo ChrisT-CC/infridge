@@ -35,6 +35,8 @@ Google Sheets file: [infridge](https://docs.google.com/spreadsheets/d/10gtKWjzPf
 4. [Data Model](#Data-Model)
 5. [Technologies Used](#Technologies-Used)
 6. [Testing](#Testing)
+    - [PEP8 validation](#PEP8-validation)
+    - [Bugs found](#Bugs-found)
 7. [Deployment](#Deployment)
 8. [Credits](#Credits)
 
@@ -74,11 +76,15 @@ Welcomes user and explains what can be done and how.
 
 ![Welcome screenshot](assets/images/welcome.jpg)
 
+[Back to top](#Table-of-contents)
+
 #### Choosing and validating basic ingredient
 
 A basic ingredient can be choose only if the ingredient already exists in the spreadsheet and input validation is passed.
 
 ![Basic ingredient](assets/images/basic-ingredient-validation.jpg)
+
+[Back to top](#Table-of-contents)
 
 #### Recipes list
 
@@ -87,17 +93,23 @@ This list is printed with option numbers for each recipe so that the user can ea
 
 ![Recipes list](assets/images/recipe-list.jpg)
 
+[Back to top](#Table-of-contents)
+
 #### Print recipe
 
 If chosen recipe has all ingredients infridge it will be printed in a user friendly format. This is a potential app ending, so the a nice "Good bye!" message is displayed to inform the user.
 
 ![Print recipe](assets/images/print-recipe.jpg)
 
+[Back to top](#Table-of-contents)
+
 #### Remove ingredients
 
 When the chosen recipe is successfully printed the ingredients quantities are automatically removed from the spreadsheet to keep the document up to date.
 
 ![Remove ingredients](assets/images/print-recipe.jpg)
+
+[Back to top](#Table-of-contents)
 
 #### Shopping list
 
@@ -106,12 +118,16 @@ Requesting a shopping list doesn't alter the spreadsheet in any way. The user wi
 
 ![Shopping list](assets/images/shopping-list.jpg)
 
+[Back to top](#Table-of-contents)
+
 #### Add ingredients
 
 If a recipe is not available the user can choose to add ingredients.
 This will update the spreadsheet. If an ingredient already exists its quantity will be updated. If an ingredient is new its name and quantity will be added as a new row in the ingredients worksheet.
 
 ![Add ingredients](assets/images/add-ingredients.jpg)
+
+[Back to top](#Table-of-contents)
 
 ### Future Features
 
@@ -186,7 +202,31 @@ This worksheet has 100 rows and 26 columns, expansion is done automatically when
 
 ## Testing
 
-Testing...
+Testing was done manualy at the creation of each feature or function.
+
+Print statements were used extensively to show different values for variables, functions or to see just general outcome.
+
+Print statements were also used throughout the project as placeholders for future functions or in newly created functions to check function calling.
+
+### [PEP8 validation](http://pep8online.com/)
+
+PEP8 code validation passed with no errors, although there is a Flake8 warning in Gitpod for setting global scope to a variable. Any other Flake8 errors or warnings were fixed.
+
+![PEP8 validation](assets/images/validation.jpg)
+
+[Back to top](#Table-of-contents)
+
+### Bugs found
+
+- **Capitalized ingredient** were ignored by validation, so lower() method was used on basic ingredient user input
+
+![Capitalized ingredient](assets/images/bug-lower.jpg)
+
+- **Empty string** user feedback was not included initially in basic ingredient validation, so a new feedback message was added
+
+- **Last entry omission** - generate available recipes list didn't show the last recipe so the range for generating the list was changed
+
+![Last entry](assets/images/last-entry-bug.jpg)
 
 [Back to top](#Table-of-contents)
 
