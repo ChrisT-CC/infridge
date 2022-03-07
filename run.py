@@ -171,7 +171,8 @@ def ingredients_infridge(ing_list):
                 break
         result = int(option_num)
         if result == 1:
-            print("Print shopping list")
+            # print("Print shopping list")
+            print_shopping_list(missing_ingredients)
         elif result == 2:
             print("\nAdd ingredients")
         # print(result)
@@ -206,6 +207,13 @@ def remove_ingredients(ing):
         ingredients_worksheet.update_cell(ing_cell_num, 2, update)
     print("Ingredients removed successfully\n")
     print("Good bye!\n")
+
+
+def print_shopping_list(value):
+    """Printing a shopping list with missing ingredients"""
+    print("\nShopping list\n")
+    for val in value:
+        print(val)
 
 
 def main():
