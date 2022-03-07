@@ -79,7 +79,7 @@ In this section, you can find implemented features as well as some features left
 
 ## Flowchart
 
-![Flowchart](assets/images/flowchart.png)
+![Flowchart](assets/images/infridge-flowchart.png)
 
 [Back to top](#Table-of-contents)
 
@@ -87,7 +87,21 @@ In this section, you can find implemented features as well as some features left
 
 ## Data Model
 
-Data model goes here...
+Google Sheets was used to store data in a spreasheet called infridge with two worksheets.
+
+**Recipes worksheet** contains all recipe data. In the first column is recipe name, followed by a number of ingredient cells. In the last cell is the cooking method.
+
+This worksheet has 50 rows and 26 columns, manual expansion is posible from spreadsheet.
+
+![Recipes worksheet](assets/images/recipes.jpg)
+
+**Ingredients worksheet** contains all ingredients data. The first column is for ingredient name and the secon is for ingredient quantity.
+
+This worksheet has 100 rows and 26 columns, expansion is done automatically when updating ingredients.
+
+**Important** At the time of submission "chicken" ingredient was set on 0 for testing, so that each chicken recipe will be unavailable.
+
+![Ingredients worksheet](assets/images/ingredients.jpg)
 
 [Back to top](#Table-of-contents)
 
