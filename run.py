@@ -50,7 +50,7 @@ def get_basic_ingredient():
     print("Example: chicken, potatoes, eggs, broccoli\n")
 
     while check_fridge():
-        basic_ingredient = input("Please choose a basic ingredient: ")
+        basic_ingredient = input("Please choose a basic ingredient: ").lower()
         if basic_ingredient.isdigit():
             print("The basic ingredient can't be a number. Try again\n")
         elif basic_ingredient == "":
@@ -171,12 +171,19 @@ def ingredients_infridge(ing_list):
                 break
         result = int(option_num)
         if result == 1:
-            # print("Print shopping list")
             print_shopping_list(missing_ingredients)
         elif result == 2:
             print("\nAdd ingredients")
-        # print(result)
-        # print(missing_ingredients)
+            while True:
+                add_ingredients()
+                while True:
+                    option = input("Add more? (1 = yes, 2 = no) ")
+                    if validate_choice(option, 2):
+                        break
+                rez = int(option)
+                if rez == 2:
+                    print("\nGood bye!\n")
+                    break
 
 
 def get_recipe_row(rec_choice):
@@ -214,6 +221,20 @@ def print_shopping_list(value):
     print("\nShopping list\n")
     for val in value:
         print(val)
+
+
+def add_ingredients():
+    """Adding ingredients to ingredients worksheet"""
+    ingredient = input("\nIngredient name: ")
+    ing_val = input("Ingredient quantity: ")
+    if ingredient in ingredients:
+        ing_cell_num = ingredients_worksheet.find(ingredient).row
+        ing_quant = ingredients_quantity[ing_cell_num-1]
+        update = int(ing_quant) + int(ing_val)
+        ingredients_worksheet.update_cell(ing_cell_num, 2, update)
+    else:
+        ingredients_worksheet.append_row([ingredient, int(ing_val)])
+    print("\nIngredient added\n")
 
 
 def main():
