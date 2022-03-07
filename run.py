@@ -160,9 +160,22 @@ def ingredients_infridge(ing_list):
         print_recipe()
         remove_ingredients(ing_list)
     else:
-        print("Recipe not available")
-        print("options")
-        print(missing_ingredients)
+        print("Recipe not available\n")
+        print("You can:\n")
+        print("1 Print a shopping list with the missing ingredients")
+        print("2 Add ingredients")
+        while True:
+            option_num = input(
+                "\nPlease choose one of the above options by number: ")
+            if validate_choice(option_num, 2):
+                break
+        result = int(option_num)
+        if result == 1:
+            print("Print shopping list")
+        elif result == 2:
+            print("\nAdd ingredients")
+        # print(result)
+        # print(missing_ingredients)
 
 
 def get_recipe_row(rec_choice):
@@ -186,14 +199,13 @@ def print_recipe():
 def remove_ingredients(ing):
     """Remove ingredients"""
     print("Removing used ingredients...\n")
-    # print(ing)
     for i in ing:
         ing_cell_num = ingredients_worksheet.find(i).row
         ing_quant = ingredients_quantity[ing_cell_num-1]
         update = int(ing_quant)-1
         ingredients_worksheet.update_cell(ing_cell_num, 2, update)
-        # print(f"{ing_cell_num} {i} is {ing_quant} - 1 = {update}")
     print("Ingredients removed successfully\n")
+    print("Good bye!\n")
 
 
 def main():
